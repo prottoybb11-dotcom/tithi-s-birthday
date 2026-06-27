@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Birthday Party</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Quicksand:wght@400;500&family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="page" id="page1">
+
+    <!-- CLOUDS ROW AT TOP -->
+    <div class="clouds-row">
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+      <img src="moving cloud.gif" alt="cloud" class="cloud" />
+    </div>
+
+    <!-- FALLING HEARTS BACKGROUND -->
+    <div class="falling-love"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+      <img src="cake2.gif" alt="birthday cake" class="cake-img" />
+      <h1 class="headline">It's Time to Party!</h1>
+      <p class="subtext">
+        Someone special was born today...<br />
+        and that's YOU,
+      </p>
+
+      <!-- DANCE GIFS + BUTTON ROW -->
+      <div class="btn-dance-row">
+        <img src="dance.gif" alt="dance" class="dance-side" />
+        <button class="btn-dance" id="letsDanceBtn">Let's Dance</button>
+        <img src="dance.gif" alt="dance" class="dance-side dance-flip" />
+      </div>
+
+    </div>
+
+    <!-- FLOWER GIF BOTTOM LEFT -->
+    <img src="flower.gif" alt="flower" class="flower-corner flower-left" />
+    <!-- FLOWER GIF BOTTOM RIGHT -->
+    <img src="flower.gif" alt="flower" class="flower-corner flower-right" />
+
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page hidden" id="page2">
+
+    <!-- CONFETTI BACKGROUND -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- SIDE FLOWERS -->
+    <img src="growing flower.gif" alt="flower" class="side-flower side-flower-left" />
+    <img src="growing flower.gif" alt="flower" class="side-flower side-flower-right" />
+
+    <div class="page2-content">
+      <h1 class="headline p2-title">Shake it off !</h1>
+      <p class="p2-subtitle">Tap the dancers to reveal your birthday message</p>
+
+      <div class="dancers-grid">
+        <div class="dancer-card" onclick="revealWord(this, 'demo')">
+          <img src="dancing.gif" alt="dancer 1" />
+          <span class="reveal-word"></span>
+        </div>
+        <div class="dancer-card" onclick="revealWord(this, 'demo')">
+          <img src="dancing2.gif" alt="dancer 2" />
+          <span class="reveal-word"></span>
+        </div>
+        <div class="dancer-card" onclick="revealWord(this, 'demo')">
+          <img src="dancing3.gif" alt="dancer 3" />
+          <span class="reveal-word"></span>
+        </div>
+        <div class="dancer-card" onclick="revealWord(this, '💖')">
+          <img src="dancing4.gif" alt="dancer 4" />
+          <span class="reveal-word"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM FLOWER ROW -->
+    <div class="flower4-bottom"></div>
+
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page hidden" id="page3">
+
+    <!-- FALLING STARS BACKGROUND -->
+    <div class="falling-stars"></div>
+
+    <div class="page3-content">
+      <h1 class="headline p3-title">Make a wish, !</h1>
+
+      <!-- CAKE WITH CELEBRATION2 BEHIND + CELEBRATION ON LEFT -->
+      <div class="cake-area">
+        <img src="celebration.gif" alt="celebration" class="celebration-left" />
+        <div class="cake-with-bg">
+          <img src="celebration2.gif" alt="celebration2" class="celebration2-behind" />
+          <img src="cake3.gif" alt="birthday cake" class="cake3-img" />
+        </div>
+      </div>
+
+      <p class="p3-happy">❤ Happy birthday ❤</p>
+
+      <!-- BUTTON WITH CELEBRATION3 ON SIDES -->
+      <div class="btn-wish-row">
+        <img src="celebration3.gif" alt="celebration" class="cel3-side" />
+        <button class="btn-wish" id="unlockWishBtn">See our best moment 💖</button>
+        <img src="celebration3.gif" alt="celebration" class="cel3-side cel3-flip" />
+      </div>
+    </div>
+
+    <!-- FLOWER3 BOTTOM CORNERS: 2 LEFT, 2 RIGHT -->
+    <img src="flower3.gif" alt="flower" class="f3-corner f3-bl1" />
+    <img src="flower3.gif" alt="flower" class="f3-corner f3-bl2" />
+    <img src="flower3.gif" alt="flower" class="f3-corner f3-br1" />
+    <img src="flower3.gif" alt="flower" class="f3-corner f3-br2" />
+
+  </div>
+  <!-- PAGE 4 -->
+  <div class="page hidden" id="page4">
+
+    <div class="page4-content">
+      <h1 class="headline p4-title">Our Best Moments</h1>
+      <p class="p4-subtitle">Swipe through our memories 💕</p>
+
+      <!-- CAROUSEL -->
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="memory-card">
+            <div class="frame-box">
+              <img src="frame2.gif" class="frame-img" alt="frame" />
+              <div class="photo-clip">
+                <img src="photo5.jpg" class="photo-img" alt="photo 1" />
+              </div>
+              <p class="caption">demo 🌙</p>
+              <img src="flower2.gif" class="flower-strip" alt="flowers" />
+            </div>
+          </div>
+
+          <div class="memory-card">
+            <div class="frame-box">
+              <img src="frame2.gif" class="frame-img" alt="frame" />
+              <div class="photo-clip">
+                <img src="photo1.jpg" class="photo-img" alt="photo 2" />
+              </div>
+              <p class="caption"> demo🍕</p>
+              <img src="flower2.gif" class="flower-strip" alt="flowers" />
+            </div>
+          </div>
+
+          <div class="memory-card">
+            <div class="frame-box">
+              <img src="frame2.gif" class="frame-img" alt="frame" />
+              <div class="photo-clip">
+                <img src="photo3.jpg" class="photo-img" alt="photo 3" />
+              </div>
+              <p class="caption">demo 😂</p>
+              <img src="flower2.gif" class="flower-strip" alt="flowers" />
+            </div>
+          </div>
+
+          <div class="memory-card">
+            <div class="frame-box">
+              <img src="frame2.gif" class="frame-img" alt="frame" />
+              <div class="photo-clip">
+                <img src="photo4.jpg" class="photo-img" alt="photo 4" />
+              </div>
+              <p class="caption">demo💪</p>
+              <img src="flower2.gif" class="flower-strip" alt="flowers" />
+            </div>
+          </div>
+
+          <div class="memory-card">
+            <div class="frame-box">
+              <img src="frame2.gif" class="frame-img" alt="frame" />
+              <div class="photo-clip">
+                <img src="photo2.jpg" class="photo-img" alt="photo 5" />
+              </div>
+              <p class="caption">demo💖</p>
+              <img src="flower2.gif" class="flower-strip" alt="flowers" />
+            </div>
+          </div>
+
+        </div>
+
+        <!-- DOTS -->
+        <div class="carousel-dots" id="carouselDots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <button class="btn-message" id="openMessageBtn">Open Message 💌</button>
+
+      <div class="page4-bottom-crew" aria-hidden="true">
+        <img src="friend2.gif" alt="friend" class="page4-dance-side page4-dance-left" />
+        <img src="friend.gif" alt="friend" class="page4-dance-center" />
+        <img src="friend3.gif" alt="friend" class="page4-dance-side page4-dance-right" />
+      </div>
+
+    </div>
+
+  </div>
+  <!-- PAGE 5 -->
+  <div class="page hidden" id="page5">
+
+    <!-- FALLING FLOWERS BACKGROUND -->
+    <div class="falling-flowers-bg" id="fallingFlowers"></div>
+
+    <!-- CLOUDS ROW AT TOP -->
+    <div class="clouds-row-p5">
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+      <img src="cloud2.gif" alt="cloud" class="cloud2" />
+    </div>
+
+    <!-- SKELETON DANCERS LEFT & RIGHT -->
+
+
+    <div class="page5-content">
+
+      <div class="page5-top-anim-row">
+        <img src="friend4.gif" alt="friend" class="page5-top-friend" />
+        <img src="celebration4.gif" alt="celebration" class="celebration-gif" />
+        <img src="friend5.gif" alt="friend" class="page5-top-friend" />
+      </div>
+
+      <div class="scratch-row">
+        <div class="scratch-wrap">
+          <div class="flower-row flower-row-left">
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+          </div>
+          <div class="message-card">
+            <h2 class="message-title">demo </h2>
+            <p class="message-text">demo</p>
+            <p class="message-text">demo </p>
+            <p class="message-text">demo💝</p>
+          </div>
+          <div class="flower-row flower-row-right">
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+          </div>
+          <canvas class="scratch-canvas" data-index="0"></canvas>
+          <div class="scratch-label">🪙 Scratch Here</div>
+        </div>
+      </div>
+
+      <div class="scratch-row">
+        <div class="scratch-wrap">
+          <div class="flower-row flower-row-left">
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+          </div>
+          <div class="message-card message-card2">
+            <h2 class="message-title">demo </h2>
+            <p class="message-text">demo</p>
+            <p class="message-text">demo</p>
+            <p class="message-text">demo💝</p>
+          </div>
+          <div class="flower-row flower-row-right">
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+            <img src="flower6.gif" alt="flower" class="page5-flower-side" />
+          </div>
+          <canvas class="scratch-canvas" data-index="1"></canvas>
+          <div class="scratch-label">🪙 Scratch Here</div>
+        </div>
+      </div>
+
+      <button class="btn-next" id="nextSurpriseBtn">Next Surprise 🎁</button>
+
+      <div class="skel-row">
+        <img src="skeleton dance.gif" alt="" class="skel-item" />
+        <img src="skeleton2.gif"      alt="" class="skel-item skel-small" />
+        <img src="skeleton dance.gif" alt="" class="skel-item" />
+        <img src="skeleton2.gif"      alt="" class="skel-item skel-small skel-hide-mobile" />
+        <img src="skeleton dance.gif" alt="" class="skel-item skel-hide-mobile" />
+        <img src="skeleton2.gif"      alt="" class="skel-item skel-small skel-hide-mobile" />
+        <img src="skeleton dance.gif" alt="" class="skel-item skel-hide-mobile" />
+        <img src="skeleton2.gif"      alt="" class="skel-item skel-small skel-hide-mobile" />
+        <img src="skeleton dance.gif" alt="" class="skel-item skel-hide-mobile" />
+        <img src="skeleton2.gif"      alt="" class="skel-item skel-small skel-hide-mobile" />
+        <img src="skeleton dance.gif" alt="" class="skel-item skel-hide-mobile" />
+        <img src="skeleton2.gif"      alt="" class="skel-item skel-small skel-hide-mobile" />
+        <img src="skeleton dance.gif" alt="" class="skel-item" />
+        <img src="skeleton2.gif"      alt="" class="skel-item skel-small" />
+        <img src="skeleton dance.gif" alt="" class="skel-item" />
+      </div>
+
+    </div>
+
+  </div>
+
+  </div>
+  <!-- PAGE 6 -->
+  <div class="page hidden" id="page6">
+
+    <div class="falling-stars6" id="fallingStars6"></div>
+
+    <div class="page6-content">
+      <img src="celebration3.gif" alt="celebration" class="celebration3-gif" />
+      <h1 class="p6-hbd">Happy Birthday</h1>
+      <h2 class="p6-title">Party On,!</h2>
+      <p class="p6-sub">May your day be filled with love,<br/>laughter, and lots of cake!</p>
+      <button class="btn-party-again" id="partyAgainBtn">🔄 Party Again</button>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

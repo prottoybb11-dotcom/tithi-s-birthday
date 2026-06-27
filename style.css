@@ -1,0 +1,1396 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100svh;
+  min-height: 100dvh;
+  overscroll-behavior: none;
+}
+
+.page {
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
+  height: 100svh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.page.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+}
+
+/* SKY BLUE BACKGROUND */
+#page1 {
+  background: linear-gradient(180deg, #87CEEB 0%, #b0e0ff 50%, #d0f0ff 100%);
+}
+
+#page2 {
+  background: linear-gradient(135deg, #a78bfa, #f9a8d4);
+}
+
+/* CLOUDS ROW */
+.clouds-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.cloud {
+  width: clamp(80px, 18vw, 140px);
+  height: auto;
+  mix-blend-mode: screen;
+  flex-shrink: 0;
+}
+
+/* FALLING HEARTS — tiled across full background */
+.falling-love {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url('falling love.gif');
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+/* CONTENT */
+.content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 40px 32px;
+  max-width: 480px;
+  width: 100%;
+}
+
+/* CAKE */
+.cake-img {
+  width: 180px;
+  height: auto;
+}
+
+/* HEADLINE */
+.headline {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(30px, 8vw, 46px);
+  font-weight: 900;
+  color: #ffffff;
+  -webkit-text-stroke: 2px #a855f7;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-shadow: 3px 3px 0px #a855f7, 0 2px 12px rgba(0,0,0,0.2);
+}
+
+/* SUBTEXT */
+.subtext {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(15px, 4vw, 18px);
+  color: #ff6600;
+  line-height: 1.7;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 12px rgba(255, 100, 0, 0.6), 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* BUTTON */
+.btn-dance {
+  background: #f0ffd4;
+  color: #0a0a2e;
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(17px, 4vw, 21px);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 60px;
+  cursor: pointer;
+  width: 80%;
+  max-width: 320px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btn-dance:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+.btn-dance:active {
+  transform: scale(0.97);
+}
+
+
+/* ===================== PAGE 2 ===================== */
+
+#page2 {
+  background: linear-gradient(180deg, #2a6a8a 0%, #1a4a6a 50%, #0f2a4a 100%);
+}
+
+.page2-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 28px;
+  width: 100%;
+  max-width: 480px;
+  gap: 12px;
+}
+
+.p2-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(28px, 7vw, 42px);
+  color: #ffffff;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #00d4ff;
+  text-shadow: 3px 3px 0px #00d4ff, 0 2px 12px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+.p2-subtitle {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(14px, 3.5vw, 17px);
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+/* DANCERS GRID */
+.dancers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.dancer-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.dancer-card:active {
+  transform: scale(0.93);
+}
+
+.dancer-card img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.reveal-word {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 700;
+  color: #FFD700;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateX(-50%) scale(0.5);
+  white-space: nowrap;
+}
+
+.reveal-word.visible {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* CONFETTI */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  opacity: 0.85;
+  animation: confettiFall linear infinite;
+  border-radius: 2px;
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+}
+
+
+/* FLOATING ANIMATION */
+@keyframes floatUpDown {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.headline {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+.p2-title {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+
+/* ===================== PAGE 3 ===================== */
+
+#page3 {
+  background: linear-gradient(180deg, #0d1b3e 0%, #0a1628 50%, #060d1f 100%);
+}
+
+/* FALLING STARS BACKGROUND */
+.falling-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url('falling star.gif');
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+.page3-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 28px 40px;
+  width: 100%;
+  max-width: 480px;
+  gap: 18px;
+}
+
+.p3-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(28px, 7vw, 42px);
+  color: #ffffff;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #ff69b4;
+  text-shadow: 3px 3px 0px #ff69b4, 0 2px 12px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.cake3-img {
+  width: 220px;
+  height: auto;
+}
+
+.p3-happy {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(16px, 4vw, 20px);
+  color: #ffb3d9;
+  font-weight: 600;
+  font-style: italic;
+  text-shadow: 0 0 12px rgba(255, 100, 180, 0.7);
+  letter-spacing: 1px;
+}
+
+/* UNLOCK WISH BUTTON */
+.btn-wish {
+  background: linear-gradient(135deg, #ff69b4, #a855f7);
+  color: #ffffff;
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(16px, 4vw, 20px);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 30px;
+  cursor: pointer;
+  flex: 1;
+  max-width: 280px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px rgba(255, 105, 180, 0.4);
+  margin-top: 10px;
+}
+
+.btn-wish:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(255, 105, 180, 0.6);
+}
+
+.btn-wish:active {
+  transform: scale(0.96);
+}
+
+
+/* ===================== PAGE 4 ===================== */
+
+#page4 {
+  background: linear-gradient(135deg, #1a0a2e 0%, #0f0520 50%, #050210 100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+@media (max-width: 600px) {
+  .content,
+  .page2-content,
+  .page3-content,
+  .page4-content,
+  .page5-content,
+  .page6-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .btn-dance,
+  .btn-wish,
+  .btn-message,
+  .btn-next,
+  .btn-party-again {
+    width: 100%;
+    max-width: none;
+  }
+
+  .flower-corner,
+  .side-flower {
+    width: 70px;
+  }
+
+  .dance-side {
+    width: clamp(95px, 28vw, 140px);
+  }
+
+  .page2-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .p2-title,
+  .p2-subtitle {
+    text-align: center;
+  }
+
+  .celebration-left {
+    width: clamp(120px, 30vw, 198px);
+  }
+
+  .page5-flower-side {
+    width: clamp(40px, 11vw, 60px);
+  }
+
+}
+
+/* VERTICAL LINES BACKGROUND */
+#page4::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 60px,
+    rgba(199, 125, 255, 0.07) 60px,
+    rgba(199, 125, 255, 0.07) 62px
+  );
+  pointer-events: none;
+}
+
+.page4-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 50px 20px 40px;
+  width: 100%;
+  max-width: 480px;
+  gap: 6px;
+  margin: 0 auto;
+}
+
+.p4-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(28px, 7vw, 42px);
+  color: #ffffff;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #c77dff;
+  text-shadow: 3px 3px 0px #c77dff, 0 2px 12px rgba(0,0,0,0.3);
+  text-align: center;
+  padding-top: 10px;
+}
+
+.p4-subtitle {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(14px, 3.5vw, 17px);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* CAROUSEL */
+.carousel-wrapper {
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.memory-card {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.frame-box {
+  position: relative;
+  width: min(90vw, 440px);
+  height: min(108vw, 530px);
+}
+
+.frame-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* photo clipped strictly inside the frame photo area */
+.photo-clip {
+  position: absolute;
+  top: 7%;
+  left: 13%;
+  width: 74%;
+  height: 62%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.photo-clip .photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* caption above the flower */
+.caption {
+  position: absolute;
+  bottom: 17%;
+  left: 10%;
+  width: 80%;
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(13px, 3.5vw, 16px);
+  color: #333333;
+  font-weight: 700;
+  text-align: center;
+  z-index: 3;
+  line-height: 1.3;
+}
+
+/* flower below the photo in the dark gap area */
+.flower-strip {
+  position: absolute;
+  bottom: 21%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* DOTS */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active {
+  background: #c77dff;
+  transform: scale(1.3);
+}
+
+/* OPEN MESSAGE BUTTON */
+.btn-message {
+  background: linear-gradient(135deg, #ff6bcb, #c77dff);
+  color: #ffffff;
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(16px, 4vw, 20px);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 50px;
+  cursor: pointer;
+  width: 80%;
+  max-width: 320px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px rgba(199, 125, 255, 0.4);
+  margin-top: 10px;
+  margin-bottom: -20px;
+}
+
+.btn-message:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(199, 125, 255, 0.6);
+}
+
+.btn-message:active {
+  transform: scale(0.96);
+}
+
+/* FALLING RIBBONS */
+.ribbon-piece {
+  position: fixed;
+  width: 4px;
+  border-radius: 2px;
+  opacity: 0.8;
+  animation: ribbonFall linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes ribbonFall {
+  0%   { transform: translateY(-40px) rotate(0deg) scaleX(1); opacity: 1; }
+  50%  { transform: translateY(50vh) rotate(360deg) scaleX(-1); }
+  100% { transform: translateY(110vh) rotate(720deg) scaleX(1); opacity: 0.2; }
+}
+
+
+/* ===================== PAGE 5 ===================== */
+
+#page5 {
+  background: linear-gradient(180deg, #110a2e 0%, #3d1a3d 35%, #7a3518 70%, #9e5a1a 100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-attachment: local;
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  background-color: #9e5a1a;
+}
+
+.page5-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 16px 0px;
+  width: 100%;
+  max-width: 480px;
+  gap: 20px;
+  justify-content: flex-start;
+  min-height: unset;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.page5-top-anim-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding-top: clamp(50px, 12vw, 80px);
+}
+
+.page5-top-friend {
+  width: clamp(98px, 22.4vw, 154px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* CELEBRATION GIF AT TOP */
+.celebration-gif {
+  width: 160px;
+  height: auto;
+  margin-top: 0;
+}
+
+/* MESSAGE CARD + SCRATCH ROW */
+.scratch-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  padding: 0 75px;
+}
+
+.scratch-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  flex-shrink: 0;
+}
+
+.message-card {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 24px;
+  padding: clamp(30px, 6vw, 50px) clamp(14px, 4vw, 24px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  margin: 0 auto;
+}
+
+.page5-flower-side {
+  position: absolute;
+  top: 50%;
+  width: clamp(52px, 14vw, 88px);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.page5-flower-left {
+  left: clamp(-28px, -7vw, -10px);
+  right: auto;
+  transform: translateY(-50%);
+}
+
+.page5-flower-right {
+  right: clamp(-28px, -7vw, -10px);
+  left: auto;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+.page5-cloud-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  width: 100%;
+  padding-bottom: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.page5-cloud-row-top {
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.page5-cloud {
+  width: clamp(92px, 18vw, 150px);
+  height: auto;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.message-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(22px, 6vw, 30px);
+  color: #e91e8c;
+  text-align: center;
+  font-weight: 400;
+}
+
+.message-text {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(14px, 3.8vw, 17px);
+  color: #3d0066;
+  line-height: 1.8;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* NEXT SURPRISE BUTTON */
+.btn-next {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  color: #ffffff;
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(16px, 4vw, 20px);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 50px;
+  cursor: pointer;
+  width: 80%;
+  max-width: 320px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px rgba(168, 85, 247, 0.4);
+  margin-bottom: 10px;
+}
+
+.btn-next:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.6);
+}
+
+.btn-next:active {
+  transform: scale(0.96);
+}
+
+/* FALLING FLOWERS BACKGROUND */
+.falling-flowers-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fall-flower {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50% 0 50% 0;
+  animation: flowerFall linear infinite;
+  opacity: 0.75;
+}
+
+@keyframes flowerFall {
+  0%   { transform: translateY(-30px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0.1; }
+}
+
+
+/* ===================== PAGE 6 ===================== */
+
+#page6 {
+  background: linear-gradient(180deg, #070412 0%, #04020a 50%, #020105 100%);
+}
+
+.page6-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 28px;
+  width: 100%;
+  max-width: 480px;
+  gap: 18px;
+}
+
+.celebration3-gif {
+  width: 200px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(255,105,180,0.3);
+}
+
+.p6-hbd {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(32px, 9vw, 52px);
+  font-weight: 400;
+  color: #ffffff;
+  -webkit-text-stroke: 2px #ff69b4;
+  text-shadow: 3px 3px 0px #ff69b4, 0 2px 16px rgba(255,105,180,0.4);
+  letter-spacing: 2px;
+}
+
+.p6-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(24px, 6vw, 36px);
+  font-weight: 400;
+  color: #ffd700;
+  text-shadow: 2px 2px 0px #ff8c00, 0 2px 12px rgba(255,215,0,0.4);
+}
+
+.p6-sub {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(15px, 4vw, 18px);
+  color: rgba(255,255,255,0.88);
+  font-weight: 500;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.btn-party-again {
+  background: #ffffff;
+  color: #1a0a2e;
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(16px, 4vw, 20px);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 60px;
+  cursor: pointer;
+  width: 80%;
+  max-width: 320px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px rgba(255,255,255,0.2);
+  margin-top: 10px;
+}
+
+.btn-party-again:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(255,255,255,0.35);
+}
+
+.btn-party-again:active {
+  transform: scale(0.96);
+}
+
+/* FALLING STARS PAGE 6 */
+.falling-stars6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star6-piece {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: star6Fall linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes star6Fall {
+  0%   { transform: translateY(-20px) scale(1); opacity: 1; }
+  50%  { opacity: 0.8; }
+  100% { transform: translateY(110vh) scale(0.3); opacity: 0; }
+}
+
+
+/* DANCE GIF + BUTTON ROW */
+.btn-dance-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.dance-side {
+  width: clamp(60px, 18vw, 175px);
+  height: auto;
+}
+
+.dance-flip {
+  transform: scaleX(-1);
+}
+
+/* FLOWER CORNERS PAGE 1 */
+.flower-corner {
+  position: absolute;
+  width: clamp(60px, 15vw, 120px);
+  height: auto;
+  z-index: 2;
+  bottom: 0;
+}
+
+.flower-left {
+  left: 0;
+}
+
+.flower-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+
+/* PAGE 2 SIDE FLOWERS */
+.side-flower {
+  position: fixed;
+  bottom: 0;
+  width: clamp(100px, 25vw, 270px);
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.side-flower-left {
+  left: 0;
+  position: fixed;
+}
+
+.side-flower-right {
+  right: 0;
+  position: fixed;
+  transform: scaleX(-1);
+}
+
+/* PAGE 2 BOTTOM FLOWER ROW */
+.flower4-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-image: url('flower4.gif');
+  background-repeat: repeat-x;
+  background-size: auto 90px;
+  background-position: bottom;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* PAGE 3 EXTRAS */
+
+/* cake area with celebration on left */
+.cake-area {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.celebration-left {
+  width: clamp(80px, 20vw, 198px);
+  height: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* cake with celebration2 behind it */
+.cake-with-bg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.celebration2-behind {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: auto;
+  z-index: 0;
+}
+
+.cake3-img {
+  position: relative;
+  z-index: 1;
+  width: 220px;
+  height: auto;
+}
+
+.p3-happy {
+  margin-top: 0;
+}
+
+/* button row with celebration3 on sides */
+.btn-wish-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.cel3-side {
+  width: 140px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.cel3-flip {
+  transform: scaleX(-1);
+}
+
+/* BUTTON — full width, single line */
+.btn-wish {
+  background: linear-gradient(135deg, #ff69b4, #a855f7);
+  color: #ffffff;
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(14px, 3.5vw, 18px);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 20px;
+  cursor: pointer;
+  flex: 1;
+  max-width: 260px;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px rgba(255, 105, 180, 0.4);
+}
+.f3-corner {
+  position: absolute;
+  bottom: 0;
+  width: 90px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.f3-bl1 { left: 0; }
+.f3-bl2 { left: 80px; transform: scaleX(-1); }
+.f3-br1 { right: 0; transform: scaleX(-1); }
+.f3-br2 { right: 80px; }
+
+
+/* PAGE 4 FRIEND GIFS AT BOTTOM CENTER */
+.page4-bottom-crew {
+  position: static;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  z-index: 4;
+  pointer-events: none;
+  width: 100%;
+  margin-top: -20px;
+  padding-bottom: 10px;
+}
+
+.page4-dance-side {
+  width: clamp(120px, 30vw, 190px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.page4-dance-center {
+  width: clamp(155px, 40vw, 255px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .page4-bottom-crew {
+    gap: 6px;
+  }
+
+  .page4-dance-side {
+    width: clamp(95px, 26vw, 150px);
+  }
+
+  .page4-dance-center {
+    width: clamp(125px, 34vw, 185px);
+  }
+
+  .page5-top-anim-row {
+    gap: 8px;
+  }
+
+  .page5-top-friend {
+    width: clamp(84px, 25.2vw, 126px);
+  }
+}
+
+
+/* ===================== MOBILE FIXES ===================== */
+@media (max-width: 480px) {
+  .page4-content,
+  .page3-content,
+  .page2-content,
+  .page6-content {
+    padding: 20px 14px 20px;
+    gap: 10px;
+  }
+
+  /* Page 5 mobile — remove gaps top and bottom */
+  #page5 {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .page5-content {
+    justify-content: flex-start;
+    padding: 60px 14px 20px;
+    gap: 8px;
+    min-height: unset;
+  }
+
+  .page5-top-anim-row {
+    gap: 4px;
+    padding-top: 0;
+  }
+
+  .page5-top-friend {
+    width: clamp(70px, 22vw, 110px);
+  }
+
+  .celebration-gif {
+    width: 100px;
+  }
+
+  .frame-box {
+    width: 88vw !important;
+    height: calc(88vw * 1.2) !important;
+  }
+
+  .message-card {
+    padding: 20px 16px;
+  }
+
+  .page5-flower-side {
+    width: clamp(36px, 10vw, 52px);
+  }
+
+  .cake3-img {
+    width: 160px;
+  }
+
+  .cel3-side {
+    width: 80px;
+  }
+
+  .celebration-left {
+    width: 100px;
+  }
+
+  .f3-corner {
+    width: 70px;
+  }
+
+  .p6-hbd {
+    font-size: clamp(26px, 8vw, 40px);
+  }
+
+  .dancers-grid {
+    gap: 12px;
+  }
+
+  .dancer-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+/* PAGE 5 CLOUD ROW */
+.clouds-row-p5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cloud2 {
+  width: clamp(132px, 26vw, 242px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+
+/* STAGGERED CLOUD ANIMATION - only 2 active at a time */
+@keyframes cloudPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.cloud2:nth-child(1)  { animation: cloudPulse 3s ease-in-out 0s infinite; }
+.cloud2:nth-child(2)  { animation: cloudPulse 3s ease-in-out 0.3s infinite; }
+.cloud2:nth-child(3)  { animation: cloudPulse 3s ease-in-out 0.6s infinite; }
+.cloud2:nth-child(4)  { animation: cloudPulse 3s ease-in-out 0.9s infinite; }
+.cloud2:nth-child(5)  { animation: cloudPulse 3s ease-in-out 1.2s infinite; }
+.cloud2:nth-child(6)  { animation: cloudPulse 3s ease-in-out 1.5s infinite; }
+.cloud2:nth-child(7)  { animation: cloudPulse 3s ease-in-out 1.8s infinite; }
+.cloud2:nth-child(8)  { animation: cloudPulse 3s ease-in-out 2.1s infinite; }
+.cloud2:nth-child(9)  { animation: cloudPulse 3s ease-in-out 2.4s infinite; }
+.cloud2:nth-child(10) { animation: cloudPulse 3s ease-in-out 2.7s infinite; }
+
+
+/* SECOND MESSAGE CARD */
+.message-card2 {
+  background: rgba(255, 230, 255, 0.93);
+}
+
+
+/* SCRATCH CARD */
+.scratch-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+}
+
+.scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  cursor: crosshair;
+  z-index: 10;
+  touch-action: none;
+}
+
+.scratch-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  pointer-events: none;
+  z-index: 11;
+  white-space: nowrap;
+}
+
+
+/* PAGE 5 FLOWER ROWS — LEFT & RIGHT OF MESSAGE CARDS */
+.flower-row {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.flower-row-left {
+  left: -70px;
+}
+
+.flower-row-right {
+  right: -70px;
+}
+
+.flower-row .page5-flower-side {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  width: 58px;
+}
+
+
+/* ===================== PAGE 5 SKELETON ROW ===================== */
+.skel-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 0;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.skel-item {
+  flex: 1 1 0;
+  min-width: 0;
+  height: auto;
+  display: block;
+}
+
+.skel-small {
+  flex: 0.65 1 0;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .skel-hide-mobile {
+    display: none;
+  }
+}
