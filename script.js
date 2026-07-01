@@ -9,6 +9,39 @@ const unlockWishBtn = document.getElementById('unlockWishBtn');
 const openMessageBtn = document.getElementById('openMessageBtn');
 const nextSurpriseBtn = document.getElementById('nextSurpriseBtn');
 const partyAgainBtn = document.getElementById('partyAgainBtn');
+const nextMoveBtn = document.getElementById('nextMoveBtn');
+
+// MUSIC
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+const startOverlay = document.getElementById('startOverlay');
+let musicOn = false;
+
+// Tap to start overlay — dismisses and starts music
+startOverlay.addEventListener('click', () => {
+  startOverlay.style.opacity = '0';
+  setTimeout(() => startOverlay.remove(), 500);
+  bgMusic.play().then(() => {
+    musicOn = true;
+    musicBtn.textContent = '🎵';
+    musicBtn.classList.remove('muted');
+  });
+});
+
+musicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (musicOn) {
+    bgMusic.pause();
+    musicBtn.textContent = '🔇';
+    musicBtn.classList.add('muted');
+    musicOn = false;
+  } else {
+    bgMusic.play();
+    musicBtn.textContent = '🎵';
+    musicBtn.classList.remove('muted');
+    musicOn = true;
+  }
+});
 
 function goToPage2() {
   page1.classList.add('hidden');
@@ -40,6 +73,10 @@ function partyAgain() {
 }
 
 letsDanceBtn.addEventListener('click', goToPage2);
+nextMoveBtn.addEventListener('click', () => {
+  page2.classList.add('hidden');
+  page3.classList.remove('hidden');
+});
 unlockWishBtn.addEventListener('click', goToPage4);
 openMessageBtn.addEventListener('click', goToPage5);
 nextSurpriseBtn.addEventListener('click', goToPage6);
@@ -51,24 +88,82 @@ let clickedCount = 0;
 function revealWord(card, word) {
   const span = card.querySelector('.reveal-word');
 
-  // Only count first click per card
   if (!span.classList.contains('visible')) {
     clickedCount++;
-    span.textContent = word;
+    span.innerHTML = word;
     span.classList.add('visible');
 
     // bounce the card
     card.style.transform = 'scale(1.1)';
     setTimeout(() => { card.style.transform = 'scale(1)'; }, 200);
 
-    // After all 4 clicked, go to page 3
-    if (clickedCount === 4) {
-      setTimeout(() => {
-        page2.classList.add('hidden');
-        page3.classList.remove('hidden');
-      }, 1000);
-    }
+    // Make draggable after a short delay
+    setTimeout(() => makeDraggable(span), 300);
   }
+}
+
+function makeDraggable(el) {
+  let offsetX = 0, offsetY = 0, dragging = false;
+
+  el.addEventListener('mousedown', (e) => {
+    dragging = true;
+    if (el.style.position !== 'absolute' || el.parentElement !== page2) {
+      const r = el.getBoundingClientRect();
+      const p2r = page2.getBoundingClientRect();
+      el.style.position = 'absolute';
+      el.style.left = (r.left - p2r.left) + 'px';
+      el.style.top = (r.top - p2r.top) + 'px';
+      el.style.width = r.width + 'px';
+      el.style.height = r.height + 'px';
+      el.style.zIndex = '999';
+      page2.appendChild(el);
+    }
+    offsetX = e.clientX - el.getBoundingClientRect().left + page2.getBoundingClientRect().left;
+    offsetY = e.clientY - el.getBoundingClientRect().top + page2.getBoundingClientRect().top;
+    el.style.cursor = 'grabbing';
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const p2r = page2.getBoundingClientRect();
+    el.style.left = (e.clientX - p2r.left - offsetX) + 'px';
+    el.style.top = (e.clientY - p2r.top - offsetY) + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    dragging = false;
+    el.style.cursor = 'grab';
+  });
+
+  el.addEventListener('touchstart', (e) => {
+    dragging = true;
+    if (el.style.position !== 'absolute' || el.parentElement !== page2) {
+      const r = el.getBoundingClientRect();
+      const p2r = page2.getBoundingClientRect();
+      el.style.position = 'absolute';
+      el.style.left = (r.left - p2r.left) + 'px';
+      el.style.top = (r.top - p2r.top) + 'px';
+      el.style.width = r.width + 'px';
+      el.style.height = r.height + 'px';
+      el.style.zIndex = '999';
+      page2.appendChild(el);
+    }
+    offsetX = e.touches[0].clientX - el.getBoundingClientRect().left + page2.getBoundingClientRect().left;
+    offsetY = e.touches[0].clientY - el.getBoundingClientRect().top + page2.getBoundingClientRect().top;
+    e.stopPropagation();
+  }, { passive: true });
+
+  el.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    const p2r = page2.getBoundingClientRect();
+    el.style.left = (e.touches[0].clientX - p2r.left - offsetX) + 'px';
+    el.style.top = (e.touches[0].clientY - p2r.top - offsetY) + 'px';
+    e.preventDefault();
+  }, { passive: false });
+
+  el.addEventListener('touchend', () => { dragging = false; });
 }
 
 // Confetti
@@ -94,7 +189,7 @@ function startConfetti() {
 let currentSlide = 0;
 const track = document.getElementById('carouselTrack');
 const dots = document.querySelectorAll('.dot');
-const totalSlides = 5;
+const totalSlides = 4;
 
 function updateCarousel() {
   track.style.transform = `translateX(-${currentSlide * 100}%)`;

@@ -3,11 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Birthday Party</title>
+  <title>Tithi`s Birthday</title>
   <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Quicksand:wght@400;500&family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" src="count on me.mp3" loop preload="auto"></audio>
+
+  <!-- MUSIC TOGGLE BUTTON (fixed, always visible) -->
+  <button id="musicBtn" class="music-btn" title="Toggle Music">🎵</button>
+
+  <!-- TAP TO START OVERLAY -->
+  <div id="startOverlay">
+    <div class="start-box">
+      <p class="start-emoji">🎂</p>
+      <p class="start-text">Tap to Begin</p>
+      <p class="start-sub">A surprise is waiting for you 💖</p>
+    </div>
+  </div>
 
   <!-- PAGE 1 -->
   <div class="page" id="page1">
@@ -30,7 +45,7 @@
     <!-- MAIN CONTENT -->
     <div class="content">
       <img src="cake2.gif" alt="birthday cake" class="cake-img" />
-      <h1 class="headline">It's Time to Party!</h1>
+      <h1 class="headline">It's Time to Party, Bestie!</h1>
       <p class="subtext">
         Someone special was born today...<br />
         and that's YOU,
@@ -63,27 +78,30 @@
     <img src="growing flower.gif" alt="flower" class="side-flower side-flower-right" />
 
     <div class="page2-content">
-      <h1 class="headline p2-title">Shake it off !</h1>
-      <p class="p2-subtitle">Tap the dancers to reveal your birthday message</p>
+      <h1 class="headline p2-title">Shake it off , Bestie !</h1>
+      <p class="p2-subtitle">Tap the dancers to reveal my message for you....</p>
 
       <div class="dancers-grid">
-        <div class="dancer-card" onclick="revealWord(this, 'demo')">
+        <div class="dancer-card" onclick="revealWord(this, 'We have never gone a single day <br>without arguing since class 8 <br>and that`s what makes our friendship so special.' )">
           <img src="dancing.gif" alt="dancer 1" />
           <span class="reveal-word"></span>
         </div>
-        <div class="dancer-card" onclick="revealWord(this, 'demo')">
+        <div class="dancer-card" onclick="revealWord(this, 'Though it may seem<br>like a short time, the<br>memories I have made<br>with you is unforgettable')">
           <img src="dancing2.gif" alt="dancer 2" />
           <span class="reveal-word"></span>
         </div>
-        <div class="dancer-card" onclick="revealWord(this, 'demo')">
+        <div class="dancer-card" onclick="revealWord(this, 'You taught me how to<br>laugh even in the most<br>serious moments without<br>hesitation')">
           <img src="dancing3.gif" alt="dancer 3" />
           <span class="reveal-word"></span>
         </div>
-        <div class="dancer-card" onclick="revealWord(this, '💖')">
+        <div class="dancer-card" onclick="revealWord(this, 'I really can still remember<br>those days when we<br>cycled for hours...')">
           <img src="dancing4.gif" alt="dancer 4" />
           <span class="reveal-word"></span>
         </div>
       </div>
+
+      <button class="btn-next-move" id="nextMoveBtn">Next Move 💫</button>
+
     </div>
 
     <!-- BOTTOM FLOWER ROW -->
@@ -98,7 +116,7 @@
     <div class="falling-stars"></div>
 
     <div class="page3-content">
-      <h1 class="headline p3-title">Make a wish, !</h1>
+      <h1 class="headline p3-title">Make a wish,Bestie..!</h1>
 
       <!-- CAKE WITH CELEBRATION2 BEHIND + CELEBRATION ON LEFT -->
       <div class="cake-area">
@@ -109,7 +127,7 @@
         </div>
       </div>
 
-      <p class="p3-happy">❤ Happy birthday ❤</p>
+      <p class="p3-happy">Happy birthday, TITHI 💖</p>
 
       <!-- BUTTON WITH CELEBRATION3 ON SIDES -->
       <div class="btn-wish-row">
@@ -143,7 +161,7 @@
               <div class="photo-clip">
                 <img src="photo5.jpg" class="photo-img" alt="photo 1" />
               </div>
-              <p class="caption">demo 🌙</p>
+              <p class="caption">The day we went to the Gorai River ,<br> and this photo was taken by chance...</p>
               <img src="flower2.gif" class="flower-strip" alt="flowers" />
             </div>
           </div>
@@ -154,7 +172,7 @@
               <div class="photo-clip">
                 <img src="photo1.jpg" class="photo-img" alt="photo 2" />
               </div>
-              <p class="caption"> demo🍕</p>
+              <p class="caption">The quality of this picture can never capture<br> the moments we spent on the riverbank for an hour </p>
               <img src="flower2.gif" class="flower-strip" alt="flowers" />
             </div>
           </div>
@@ -165,7 +183,7 @@
               <div class="photo-clip">
                 <img src="photo3.jpg" class="photo-img" alt="photo 3" />
               </div>
-              <p class="caption">demo 😂</p>
+              <p class="caption">This photo was planned, but it tells <br> the story of all the battles we have through together</p>
               <img src="flower2.gif" class="flower-strip" alt="flowers" />
             </div>
           </div>
@@ -176,18 +194,7 @@
               <div class="photo-clip">
                 <img src="photo4.jpg" class="photo-img" alt="photo 4" />
               </div>
-              <p class="caption">demo💪</p>
-              <img src="flower2.gif" class="flower-strip" alt="flowers" />
-            </div>
-          </div>
-
-          <div class="memory-card">
-            <div class="frame-box">
-              <img src="frame2.gif" class="frame-img" alt="frame" />
-              <div class="photo-clip">
-                <img src="photo2.jpg" class="photo-img" alt="photo 5" />
-              </div>
-              <p class="caption">demo💖</p>
+              <p class="caption">This photo shows two sides of us : friendship and <br>a brother-and-sister bond- according to me </p>
               <img src="flower2.gif" class="flower-strip" alt="flowers" />
             </div>
           </div>
@@ -197,7 +204,6 @@
         <!-- DOTS -->
         <div class="carousel-dots" id="carouselDots">
           <span class="dot active"></span>
-          <span class="dot"></span>
           <span class="dot"></span>
           <span class="dot"></span>
           <span class="dot"></span>
@@ -253,11 +259,20 @@
             <img src="flower6.gif" alt="flower" class="page5-flower-side" />
             <img src="flower6.gif" alt="flower" class="page5-flower-side" />
           </div>
+
+
           <div class="message-card">
-            <h2 class="message-title">demo </h2>
-            <p class="message-text">demo</p>
-            <p class="message-text">demo </p>
-            <p class="message-text">demo💝</p>
+            <h2 class="message-title">The Walking Disaster I Call My Best Friend.. </h2>
+            <p class="message-text"> If someone asks me about you, I'll probably say, "She's annoying." 😒But I definitely won't tell them that you're actually one of the kindest and most genuine people I've ever met.
+            </p>
+            <p class="message-text">I don't have a sister, but somewhere along the way, I started seeing you as my elder sister. (Although you've never really done any sister duties 😒😂, I've always respected you like one.)
+            </p>
+            <p class="message-text"> You also taught me something without even trying—how to respect girls and how to behave properly around them. That's something I'll always appreciate.
+            </p>
+            <p class="message-text"> And our school memories? They're impossible to forget. The endless games of Truth or Dare, arguing for hours about whether Rabindranath did anything for science, laughing over the dumbest things... those moments were completely random, yet they're some of my favorite memories.
+            </p>
+            <p class="message-text"> We've grown up, and life has become busier, but whenever I look back, those memories still make me smile.
+            </p>
           </div>
           <div class="flower-row flower-row-right">
             <img src="flower6.gif" alt="flower" class="page5-flower-side" />
@@ -277,10 +292,15 @@
             <img src="flower6.gif" alt="flower" class="page5-flower-side" />
           </div>
           <div class="message-card message-card2">
-            <h2 class="message-title">demo </h2>
-            <p class="message-text">demo</p>
-            <p class="message-text">demo</p>
-            <p class="message-text">demo💝</p>
+            <h2 class="message-title">May Success Always Walk Beside You...</h2>
+            <p class="message-text">I wish you a bright future... even though my own future seems to be blocked by a giant black stone. 😂</p>
+            <p class="message-text">I hope you achieve everything you've ever dreamed of and build the life you've always wanted. I wish you become independent, happy, and successful enough to do whatever makes you smile.
+            </p>
+            <p class="message-text">I know you'll make it. After all, you've had me as your friend for all these years, so failure isn't really an option. 😌😂
+            </p>
+            <p class="message-text">Once again, Happy Birthday! Stay happy, stay healthy, and never stop being the wonderfully annoying person you are.
+            </p>
+           <p class="message-text">Many, many happy returns of the day! 🎉</p>
           </div>
           <div class="flower-row flower-row-right">
             <img src="flower6.gif" alt="flower" class="page5-flower-side" />
